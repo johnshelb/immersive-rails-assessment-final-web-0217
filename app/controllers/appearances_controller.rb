@@ -10,6 +10,7 @@ class AppearancesController < ApplicationController
       #changed to redirect to the appearance show page, for editing purposes
       redirect_to @appearance
     else
+      binding.pry
       redirect_to new_appearance_path
     end
   end
@@ -25,12 +26,13 @@ class AppearancesController < ApplicationController
   def update
     @appearance = Appearance.find(params[:id])
     @appearance.update(appearance_params)
+    redirect_to appearance_path
   end
-  
+
   private
 
   def appearance_params
-    params.require(:appearance).permit(:guest_id, :episode_id, :rating)
+    params.require(:appearance).permit(:guest_id, :episode_id, :rating, :user_id)
   end
 
 end

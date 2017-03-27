@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <%=link_to "Guests", guests_path%><br>
+    <%=link_to "Episodes", episodes_path%><br>
+    <%=link_to "Book an Appearance", new_appearance_path%><br>
+
+
     <%= yield %>
   </body>
 </html>
