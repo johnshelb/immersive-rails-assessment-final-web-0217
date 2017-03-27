@@ -7,12 +7,26 @@ class AppearancesController < ApplicationController
   def create
     @appearance = Appearance.new(appearance_params)
     if @appearance.save
-      redirect_to @appearance.episode
+      #changed to redirect to the appearance show page, for editing purposes
+      redirect_to @appearance
     else
       redirect_to new_appearance_path
     end
   end
 
+  def show
+    @appearance = Appearance.find(params[:id])
+  end
+
+  def edit
+    @appearance = Appearance.find(params[:id])
+  end
+
+  def update
+    @appearance = Appearance.find(params[:id])
+    @appearance.update(appearance_params)
+  end
+  
   private
 
   def appearance_params
